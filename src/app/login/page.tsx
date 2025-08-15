@@ -155,7 +155,7 @@ export default function LoginPage() {
           className="text-sm text-center mt-6"
           style={{ color: "#333333" }}
         >
-          Don't have an account?{" "}
+          Don&apost have an account?{" "}
           <a
             href="/register"
             style={{ color: "#5A9BD5", textDecoration: "underline" }}

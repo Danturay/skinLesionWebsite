@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "@/sections/Navbar"; // Adjust path if needed
+import Image from "next/image";
 
 export default function TrackingPage() {
   const [images, setImages] = useState<File[]>([]);
@@ -85,7 +86,7 @@ export default function TrackingPage() {
                 className="relative rounded-lg overflow-hidden border"
                 style={{ borderColor: "#A8D5BA" }}
               >
-                <img
+                <Image
                   src={URL.createObjectURL(file)}
                   alt={`Lesion ${index + 1}`}
                   className="object-cover w-full h-32"

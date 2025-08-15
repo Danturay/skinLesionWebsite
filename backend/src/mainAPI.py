@@ -11,8 +11,23 @@ import cv2
 
 app = FastAPI(title="Skin Lesion Classification API")
 
-IMG_SIZE = 124 
-CLASS_NAMES = ["nv", "mel", "bkl", "bcc", "akiec", "vasc", "df"] # your labels
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+    "http://localhost:3000",  # React dev server
+    "http://127.0.0.1:3000",  # sometimes needed
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+IMG_SIZE = 124
+CLASS_NAMES = ["nv", "mel", "bkl", "bcc", "akiec", "vasc", "df"]  # your labels
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # folder where mainAPI.py is
