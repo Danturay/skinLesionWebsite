@@ -54,7 +54,7 @@ export const UploadSection = () => {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/predict", {
+      const response = await fetch("https://skinlesionwebapi.onrender.com/predict", {
         method: "POST",
         body: formData,
       });
@@ -178,7 +178,7 @@ export const UploadSection = () => {
             </span>
           </>
         ) : (
-          <Image
+          <img
             src={preview}
             alt="Uploaded lesion preview"
             className="max-h-72 object-contain rounded-md"

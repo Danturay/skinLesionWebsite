@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
     "http://localhost:3000",  # React dev server
-    "http://127.0.0.1:3000",  # sometimes needed
+    "https://skinlesionwebapi.onrender.com",  # sometimes needed
 ]
 
 app.add_middleware(
