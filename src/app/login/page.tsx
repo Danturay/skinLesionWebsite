@@ -35,7 +35,7 @@ export default function LoginPage() {
 
       console.log("User logged in:", userCredential.user);
 
-      window.location.href = "/dashboard";
+      window.location.href = "/tracking";
     } catch (err: any) {
       setError(err.message);
     } finally {

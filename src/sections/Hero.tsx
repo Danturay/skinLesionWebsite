@@ -1,18 +1,18 @@
 import Image from "next/image";
-import doctorImage from "@/assets/icons/doctor.png";
+import doctorImage from "@/assets/images/doctor.png";
 import ArrowDown from "@/assets/icons/arrow-down.svg";
 import ArrowUpRight from "@/assets/icons/arrow-up-right.svg";
 
 export const HeroSection = () => {
   return (
     <section
-      className="container min-h-screen flex flex-col py-20 px-4 md:px-8"
+      className="container min-h-screen flex flex-col justify-center py-20 px-4 md:px-8"
       id="home"
     >
       {/* Responsive grid: 1 column on mobile, 2 on md+ */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center flex-grow">
         {/* Left side: Text */}
-        <div className="flex flex-col text-center md:text-left">
+        <div className="flex flex-col justify-center text-center md:text-left">
           <h1 className="font-serif text-5xl md:text-6xl tracking-wide">
             Your Skin,
           </h1>
@@ -28,7 +28,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Right side: Image */}
-        <div className="relative w-full h-64 sm:h-80 md:h-96 flex justify-center md:justify-end">
+        <div className="relative w-full h-64 sm:h-80 md:h-96 flex justify-center md:justify-end items-center">
           <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden">
             <Image
               src={doctorImage}
@@ -42,12 +42,18 @@ export const HeroSection = () => {
 
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row items-center justify-center mt-10 space-y-4 sm:space-y-0 sm:space-x-6">
-        <a href="#upload" className="bg-[#5A9BD5] text-white inline-flex items-center gap-2 px-6 h-12 rounded-xl border border-transparent shadow-md transition-all duration-300 ease-in-out hover:bg-[#4a81c3] hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#5A9BD5] focus:ring-offset-2">
+        <a
+          href="#upload"
+          className="bg-[#5A9BD5] text-white inline-flex items-center gap-2 px-6 h-12 rounded-xl border border-transparent shadow-md transition-all duration-300 ease-in-out hover:bg-[#4a81c3] hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#5A9BD5] focus:ring-offset-2"
+        >
           <span className="font-semibold">Upload Photo</span>
           <ArrowDown className="w-4 h-4" />
         </a>
 
-        <a href="/about" className="bg-[#5A9BD5] text-white inline-flex items-center gap-2 px-6 h-12 rounded-xl border border-transparent shadow-md transition-all duration-300 ease-in-out hover:bg-[#4a81c3] hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#5A9BD5] focus:ring-offset-2">
+        <a
+          href="/about"
+          className="bg-[#5A9BD5] text-white inline-flex items-center gap-2 px-6 h-12 rounded-xl border border-transparent shadow-md transition-all duration-300 ease-in-out hover:bg-[#4a81c3] hover:shadow-lg hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#5A9BD5] focus:ring-offset-2"
+        >
           <span className="font-semibold">Learn More</span>
           <ArrowUpRight className="w-4 h-4" />
         </a>

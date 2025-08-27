@@ -46,7 +46,7 @@ export default function RegisterPage() {
 
       console.log("User registered:", userCredential.user);
 
-      window.location.href = "/dashboard";
+      window.location.href = "/tracking";
     } catch (err: any) {
       setError(err.message);
     } finally {

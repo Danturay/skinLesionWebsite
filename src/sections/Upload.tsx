@@ -205,7 +205,7 @@ export const UploadSection = () => {
       {/* Result */}
       {renderPrediction()}
 
-      <p className="mt-12 max-w-3xl text-center text-gray-700 text-sm leading-relaxed px-4">
+      <p className=" max-w-3xl text-center text-gray-700 text-sm leading-relaxed px-4 py-10">
         <strong>Disclaimer:</strong> This service is intended for informational purposes only and is not a medical device. It does <em>not</em> provide a clinical diagnosis. If you notice any of the following symptoms such as a new or changing mole, irregular borders, multiple colors, itching, bleeding, or rapid growth, you should seek immediate evaluation from a qualified healthcare professional.
       </p>
     </section>

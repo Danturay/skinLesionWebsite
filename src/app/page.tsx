@@ -18,7 +18,6 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <UploadSection />
-      <Footer />
     </div>
   );
 }
