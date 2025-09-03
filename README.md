@@ -1,56 +1,94 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🩺 Skin Lesion Checker
 
-## Getting Started
+An AI-powered web application that helps users check skin lesions by uploading an image. The system analyses the lesion using a trained deep learning model and provides a prediction on whether the lesion is likely **benign** or if it may require **further medical follow-up**.  
 
-First, run the development server:
+⚠️ **Disclaimer**: This tool is **not a medical diagnostic system**. It is intended for educational and research purposes only. Always consult a qualified healthcare professional for medical concerns.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Upload an image of a skin lesion  
+- AI-powered lesion classification (Benign vs. Needs follow-up)  
+- Web-based interface, accessible via browser  
+- Interactive and user-friendly results page  
+- 🏗Modular design for easy extension with new models  
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend:** React + TailwindCSS  
+- **Backend:** FastAPI (Python)  
+- **AI Model:** TensorFlow (Skin lesion classification CNN)  
+- **Deployment:** (To be deployed)  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 📂 Project Structure
 
-## Deploy on Vercel
+skin-lesion-checker/
+│── frontend/ # React frontend
+│── backend/ # FastAPI backend
+│── models/ # Trained AI models
+│── data/ # Sample images/datasets (if any)
+│── requirements.txt # Backend dependencies
+│── README.md # Project documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🎯 Purpose
 
-Notes:
+This project was developed as a **personal exploration into AI for healthcare applications**.  
+It demonstrates how computer vision and deep learning can be applied to assist with early skin lesion screening in a user-friendly web environment.
 
-1. Neural Network Animation
-Look: Circles (nodes) connected by lines (edges), pulsing and activating like brain neurons.
+---
 
-Why: Visually represents how AI neural networks work.
+## 🧠 Model Workflow & Preprocessing
 
-Tech: Canvas, SVG, or three.js.
+The AI model follows a **structured workflow** to ensure accurate predictions:  
 
-✅ Great to hint at your work in deep learning, fNIRS, or brain-data analysis.
+1. **Data Loading**  
+   - Images are loaded from the HAM10000 dataset using their image IDs.  
+   - Metadata (age, lesion type, etc.) is read from a CSV file. Missing ages are imputed with the mean value.  
 
-skipped: galexy background, grain background, tape section, testimonial section
+2. **Label Encoding**  
+   - Lesion categories (`dx`) are converted to numeric labels using `LabelEncoder`.  
+   - Labels are one-hot encoded for multi-class classification.  
 
-about me:Education, My toolbox, hobbies, download cv
+3. **Data Splitting**  
+   - A **grouped split** ensures that lesions from the same patient are not shared across training, validation, and test sets.  
+   - This avoids data leakage and ensures model generalisation.  
 
-<div className="relative overflow-hidden">
+4. **Image Preprocessing**  
+   - Images are resized to 240×240 pixels.  
+   - Converted from BGR to RGB and normalised to the `[0,1]` range.  
 
-      <NeuronsBackground />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/80 -z-10"></div>
+5. **Data Augmentation**  
+   - Applied random flips, rotations, brightness changes, and zooms during training.  
+   - Validation data is kept unaugmented to measure true performance.  
+
+6. **Model Architecture**  
+   - **Base Model:** EfficientNet-B1 pre-trained on ImageNet (feature extractor).  
+   - Added **Global Average Pooling**, **Dropout (0.3)**, and a **Dense softmax output** layer.  
+   - Base model is frozen during initial training to leverage pretrained features.  
+
+7. **Training**  
+   - Optimiser: Adam  
+   - Loss: Categorical Cross-Entropy  
+   - Metrics: Accuracy and Recall  
+   - **Class weights** are applied to handle imbalanced lesion categories.  
+   - **Callbacks:** EarlyStopping and ReduceLROnPlateau for efficient training.  
+
+8. **Evaluation**  
+   - Model is tested on the held-out test set.  
+   - Metrics include **accuracy, recall, classification report, and confusion matrix**.  
+   - Visualisations of training curves and confusion matrices are generated using `matplotlib` and `seaborn`.  
+
+This workflow ensures a robust, patient-level split and high-quality preprocessing to maximise model performance.  
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Dante Turay**  
